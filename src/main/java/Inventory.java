@@ -10,5 +10,20 @@ public class Inventory {
     public void addProduct(Product product) {
         this.productList.put(product.getProductId(), product);
     }
+    public void removeProduct(int productId) {
+        this.productList.remove(productId);
+    }
+    public Product searchProductById(int productId) {
+        return this.productList.get(productId);
+    }
+    public void displayProductsByCategory(String category) {
+        for (Product product : this.productList.values()) {
+            if (product.getCategory().equals(category)) {
+                System.out.println(product);
+            }
+        }
+    }
+
+
 
 }

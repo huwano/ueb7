@@ -52,4 +52,13 @@ public class Product {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
+    }
 }
