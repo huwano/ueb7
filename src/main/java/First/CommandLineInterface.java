@@ -17,56 +17,66 @@ public class CommandLineInterface {
         displayMenu();
     }
     public void displayMenu() {
-        System.out.println(" 1. -> Add First.Product ");
-        System.out.println(" 2. -> remove a First.Product  ");
-        System.out.println(" 3. -> look for a First.Product with an iD ");
-        System.out.println(" 4. -> Show Products after Category  ");
-        System.out.println(" 5. -> Show all Products ");
-        System.out.println(" 6. -> Sort Products with their name ");
-        System.out.println(" 7. -> Sort Products with their price ");
-        System.out.println(" 8. -> Show Products with low First.Inventory amount ");
-        System.out.println(" 9. -> Show Products with a custom filter ");
-        System.out.println("10. ->  raise prices of all products by X% ");
-        System.out.println("11. ->  Quit this Application ");
-        System.out.println("    ->  Choose wisely... :");
+        System.out.println(" 1. -> Produkt hinzufügen ");
+        System.out.println(" 2. -> Produkt entfernen ");
+        System.out.println(" 3. -> Produkt nach ID suchen ");
+        System.out.println(" 4. -> Produkte nach Kategorie anzeigen ");
+        System.out.println(" 5. -> Alle Produkte anzeigen ");
+        System.out.println(" 6. -> Produkte nach Namen sortieren ");
+        System.out.println(" 7. -> Produkte nach Preis sortieren ");
+        System.out.println(" 8. -> Produkte mit niedrigem Lagerbestand anzeigen ");
+        System.out.println(" 9. -> Produkte nach benutzerdefiniertem Filter anzeigen ");
+        System.out.println("10. -> Preise aller Produkte um einen Prozentsatz erhöhen ");
+        System.out.println("11. -> Anwendung beenden ");
+        System.out.println("    -> Treffen Sie eine gültige Auswahl:");
 
         int choice = scanner.nextInt();
         switch(choice) {
             case 1:
                 addProduct();
                 displayMenu();
+                break;
             case 2:
                 removeProduct();
                 displayMenu();
+                break;
             case 3:
                 searchProductById();
                 displayMenu();
+                break;
             case 4:
                 displayProductsByCategory();
                 displayMenu();
+                break;
             case 5:
                 listAllProducts();
                 displayMenu();
+                break;
             case 6:
                 sortProductsByName();
                 displayMenu();
+                break;
             case 7:
                 sortProductsByPrice();
                 displayMenu();
+                break;
             case 8:
                 displayLowStockProducts();
                 displayMenu();
+                break;
             case 9:
                 displayProductsByCustomFilter();
                 displayMenu();
+                break;
             case 10:
                 increaseAllProductPrices();
                 displayMenu();
+                break;
             case 11:
                 System.exit(0);
                 break;
             default:
-                System.out.println("Please choose something else ! Something valid !");
+                System.out.println("Bitte wählen Sie eine gültige Option!");
                 displayMenu();
         }
     }
