@@ -1,6 +1,10 @@
 import First.CommandLineInterface;
+import Second.Consumer;
+import Second.Producer;
 
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,16 +12,10 @@ public class Main {
         cli.start();
     }
     public static void conPro() {
-        Random ran = new Random();
-        for(int i = 0; i<10000; i++)
-        {
-            if(ran.nextInt(2) > 0 ) {
-                // Erzeugen eines neuen Integers durch den Producer und speichern
-                // in einer Collection
-            }else {
-                // Entnehmen eines Integeres aus der Collection und Berechnung der
-                // Quersumme durch den Consumer
-            }
-        }
+        System.out.println("Bitte wähle zwischen 1.Fifo oder 2.Natürliche Reihenfolge");
+
+        Producer producer = new Producer();
+        Consumer consumer = new Consumer();
+
     }
 }
