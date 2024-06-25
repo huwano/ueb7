@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.function.Predicate;
 
 public class Inventory {
     private HashMap<Integer, Product> productList;
@@ -56,8 +57,12 @@ public class Inventory {
             }
         }
     }
-    public void displayProductsByCustomFilter() {
-        // Implement your custom filter here
+    public void displayProductsByCustomFilter(Predicate<Product> filter) {
+        for (Product product : this.productList.values()) {
+            if (filter.test(product)) {
+                System.out.println(product);
+            }
+        }
     }
     public void increaseAllProductPrices(double percentage) {
         for (Product product : this.productList.values()) {

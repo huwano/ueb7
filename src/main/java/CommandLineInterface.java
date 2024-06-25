@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 public class CommandLineInterface {
     private Scanner scanner;
@@ -21,10 +22,10 @@ public class CommandLineInterface {
         System.out.println(" 6. -> Sort Products with their name ");
         System.out.println(" 7. -> Sort Products with their price ");
         System.out.println(" 8. -> Show Products with low Inventory amount ");
-        System.out.println(" 9. -> Show Products with  Produkte nach benutzerdefiniertem Filter anzeigen");
+        System.out.println(" 9. -> Show Products with a custom filter ");
         System.out.println("10. ->  raise prices of all products by X% ");
         System.out.println("11. ->  Quit this Application ");
-        System.out.println("12. ->  Choose wisely... :");
+        System.out.println("    ->  Choose wisely... :");
 
         int choice = scanner.nextInt();
         switch(choice) {
@@ -50,13 +51,13 @@ public class CommandLineInterface {
                 sortProductsByPrice();
                 displayMenu();
             case 8:
-                //displayLowStockProducts();
+                displayLowStockProducts();
                 displayMenu();
             case 9:
-                //displayProductsByCustomFilter();
+                displayProductsByCustomFilter();
                 displayMenu();
             case 10:
-                //increaseAllProductPrices();
+                increaseAllProductPrices();
                 displayMenu();
             case 11:
                 System.exit(0);
@@ -125,7 +126,35 @@ public class CommandLineInterface {
         myInventory.displayLowStockProducts();
     }
     public void displayProductsByCustomFilter() {
-        myInventory.displayProductsByCustomFilter();
+        System.out.println("Enter filter type (name, category, price, quantity):");
+        String filterType = scanner.next();
+        Predicate<Product> filter = null;
+        switch (filterType.toLowerCase()) {
+            case "name":
+                System.out.println("Enter product name:");
+                String name = scanner.next();
+                filter = product -> product.getName().equals(name);
+                break;
+            case "category":
+                System.out.println("Enter product category:");
+                String category = scanner.next();
+                filter = product -> product.getCategory().equals(category);
+                break;
+            case "price":
+                System.out.println("Enter product price:");
+                double price = scanner.nextDouble();
+                filter = product -> product.getPrice() == price;
+                break;
+            case "quantity":
+                System.out.println("Enter product quantity:");
+                int quantity = scanner.nextInt();
+                filter = product -> product.getQuantity() == quantity;
+                break;
+            default:
+                System.out.println("Invalid filter type.");
+                return;
+        }
+        myInventory.displayProductsByCustomFilter(filter);
     }
     public void increaseAllProductPrices() {
         System.out.println("Enter a percentage: ");
