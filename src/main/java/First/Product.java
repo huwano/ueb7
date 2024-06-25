@@ -19,25 +19,16 @@ public class Product {
         return productId;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getCategory() {
         return category.toLowerCase();
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
 
     public double getPrice() {
         return price;
@@ -51,9 +42,6 @@ public class Product {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
     public String toString() {
         return "First.Product{" +
                 "productId=" + productId +

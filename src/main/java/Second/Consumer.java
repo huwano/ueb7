@@ -35,20 +35,18 @@ public class Consumer {
     }
     public PriorityQueue<Integer> getCrossTotalsAscending(){
         PriorityQueue<Integer> crossTotals = new PriorityQueue<>();
-        for (int sum : sumMap.keySet()) {
-            crossTotals.add(sum);
-        }
+        crossTotals.addAll(sumMap.keySet());
         return crossTotals;
 
     }
     public PriorityQueue<Integer> getCrossTotalsDescending(){
+
+        //TODO: figure this out
         PriorityQueue<Integer> crossTotals = new PriorityQueue<>(Collections.reverseOrder());
-        for (int sum : sumMap.keySet()) {
-            crossTotals.add(sum);
-        }
+        crossTotals.addAll(sumMap.keySet());
         return crossTotals;
     }
-    public List<Long> getTimesForCrossTotal(int sum){
+    public List<Long> getTimestampsForResult(int sum){
         return sumMap.get(sum);
     }
 }

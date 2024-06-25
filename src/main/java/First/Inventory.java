@@ -21,7 +21,7 @@ public class Inventory {
             return false;
         }
     }
-    public Product searchProductById(int productId) {
+    public Product findProductById(int productId) {
         try {
             return this.productList.get(productId);
         } catch (Exception e) {
@@ -30,7 +30,6 @@ public class Inventory {
     }
     public List<Product> findProductsByCategory(String category) {
         try {
-            //TODO bischen kormisch
             List<Product> products = new ArrayList<>();
             for (Product product : this.productList.values()) {
                 if (product.getCategory().equals(category.toLowerCase())) {
@@ -50,6 +49,8 @@ public class Inventory {
         }
     }
     public void sortProductsByName() {
+
+        //TODO; cursed
         TreeMap<String, Product> sortedProducts = new TreeMap<>();
         for (Product product : this.productList.values()) {
             sortedProducts.put(product.getName(), product);
@@ -60,6 +61,7 @@ public class Inventory {
         }
     }
     public void sortProductsByPrice() {
+        //TODO; cursed
         TreeMap<Double, Product> sortedProducts = new TreeMap<>();
         for (Product product : this.productList.values()) {
             sortedProducts.put(product.getPrice(), product);
@@ -88,7 +90,6 @@ public class Inventory {
         return filteredProducts;
     }
     public void applyToProducts(Consumer<Product> consumer) {
-        //TODo ist noch cursed
         for (Product product : this.productList.values()) {
             consumer.accept(product);
         }

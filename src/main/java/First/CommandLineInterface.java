@@ -99,20 +99,18 @@ public class CommandLineInterface {
     public void removeProduct() {
         System.out.println("Geben Sie die Produkt-ID ein:");
         int productId = scanner.nextInt();
-        myInventory.removeProduct(productId);
-        System.out.println("Produkt entfernt!");
+        if (myInventory.removeProduct(productId)){
+            System.out.println("Produkt entfernt!");
+        }else {
+            System.out.println("Produkt nicht gefunden!");
+        }
     }
     public void searchProductById() {
         System.out.println("Geben Sie die Produkt-ID ein:");
         int productId = scanner.nextInt();
-        Product product = myInventory.searchProductById(productId);
+        Product product = myInventory.findProductById(productId);
         if(product != null) {
-            System.out.println("Produkt gefunden:");
-            System.out.println("Produkt-ID: " + product.getProductId());
-            System.out.println("Produktname: " + product.getName());
-            System.out.println("Produktkategorie: " + product.getCategory());
-            System.out.println("Produktpreis: " + product.getPrice());
-            System.out.println("Produktmenge: " + product.getQuantity());
+            System.out.println(product);
         } else {
             System.out.println("Produkt nicht gefunden!");
         }

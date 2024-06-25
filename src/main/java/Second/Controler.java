@@ -30,7 +30,9 @@ public class Controler {
             }
         }
         System.out.println(consumer.numberOfDifferentResults());
-        System.out.println(consumer.getTimesForCrossTotal(3));
+        System.out.println(consumer.getTimestampsForResult(3));
+        System.out.println(consumer.getCrossTotalsAscending());
+        System.out.println(consumer.getCrossTotalsDescending());
     }
     public void nat(){
         Producer producer = new Producer();
