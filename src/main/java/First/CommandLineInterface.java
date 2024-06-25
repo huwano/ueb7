@@ -1,6 +1,7 @@
 package First;
 
 import java.util.Scanner;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class CommandLineInterface {
@@ -109,10 +110,10 @@ public class CommandLineInterface {
     public void displayProductsByCategory() {
         System.out.println("Geben Sie die Kategorie ein:");
         String category = scanner.next();
-        myInventory.displayProductsByCategory(category);
+        System.out.println(myInventory.findProductsByCategory(category));
     }
     public void listAllProducts(){
-        myInventory.displayAllProducts();
+        myInventory.getAllProducts().forEach(System.out::println);
     }
     public void sortProductsByName() {
         myInventory.sortProductsByName();
@@ -125,43 +126,44 @@ public class CommandLineInterface {
         listAllProducts();
     }
     public void displayLowStockProducts() {
-        myInventory.displayLowStockProducts();
+        System.out.println("Enter a threshold for low stock products:");
+        int threshold = scanner.nextInt();
+        myInventory.getLowStockProducts(threshold).forEach(System.out::println);
     }
     public void displayProductsByCustomFilter() {
         System.out.println("Enter filter type (name, category, price, quantity):");
         String filterType = scanner.next();
-        Predicate<Product> filter = null;
+
         switch (filterType.toLowerCase()) {
             case "name":
                 System.out.println("Enter product name:");
                 String name = scanner.next();
-                filter = product -> product.getName().equals(name);
+                myInventory.filterProducts(product -> product.getName().equals(name));
                 break;
             case "category":
                 System.out.println("Enter product category:");
                 String category = scanner.next();
-                filter = product -> product.getCategory().equals(category);
+                myInventory.filterProducts(product -> product.getCategory().equals(category));
                 break;
             case "price":
                 System.out.println("Enter product price:");
                 double price = scanner.nextDouble();
-                filter = product -> product.getPrice() == price;
+                myInventory.filterProducts(product -> product.getPrice() == price);
                 break;
             case "quantity":
                 System.out.println("Enter product quantity:");
                 int quantity = scanner.nextInt();
-                filter = product -> product.getQuantity() == quantity;
+                myInventory.filterProducts(product -> product.getQuantity() == quantity);
                 break;
             default:
                 System.out.println("Invalid filter type.");
                 return;
         }
-        myInventory.displayProductsByCustomFilter(filter);
     }
     public void increaseAllProductPrices() {
         System.out.println("Enter a percentage: ");
         double percentage = scanner.nextDouble();
-        myInventory.increaseAllProductPrices(percentage);
+        myInventory.applyToProducts(product -> product.setPrice(product.getPrice() * (1 + percentage / 100)));
     }
 
 

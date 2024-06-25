@@ -1,8 +1,7 @@
 package First;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class Inventory {
@@ -14,22 +13,40 @@ public class Inventory {
     public void addProduct(Product product) {
         this.productList.put(product.getProductId(), product);
     }
-    public void removeProduct(int productId) {
-        this.productList.remove(productId);
-    }
-    public Product searchProductById(int productId) {
-        return this.productList.get(productId);
-    }
-    public void displayProductsByCategory(String category) {
-        for (Product product : this.productList.values()) {
-            if (product.getCategory().equals(category.toLowerCase())) {
-                System.out.println(product);
-            }
+    public boolean removeProduct(int productId) {
+        try {
+            this.productList.remove(productId);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
-    public void displayAllProducts() {
-        for (Product product : this.productList.values()) {
-            System.out.println(product);
+    public Product searchProductById(int productId) {
+        try {
+            return this.productList.get(productId);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public List<Product> findProductsByCategory(String category) {
+        try {
+            //TODO bischen kormisch
+            List<Product> products = new ArrayList<>();
+            for (Product product : this.productList.values()) {
+                if (product.getCategory().equals(category.toLowerCase())) {
+                    products.add(product);
+                }
+            }
+            return products;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public List<Product> getAllProducts() {
+        try {
+            return (List<Product>) this.productList.values();
+        } catch (Exception e) {
+            return null;
         }
     }
     public void sortProductsByName() {
@@ -52,24 +69,28 @@ public class Inventory {
             this.productList.put(entry.getValue().getProductId(), entry.getValue());
         }
     }
-    public void displayLowStockProducts() {
+    public List<Product> getLowStockProducts(int threshold) {
+        List<Product> lowStockProducts = new ArrayList<Product>();
         for (Product product : this.productList.values()) {
-            if (product.getQuantity() < 5) {
-                System.out.println(product);
+            if (product.getQuantity() < threshold) {
+                lowStockProducts.add(product);
             }
         }
+        return lowStockProducts;
     }
-    public void displayProductsByCustomFilter(Predicate<Product> filter) {
+    public List<Product> filterProducts(Predicate<Product> predicate) {
+        List<Product> filteredProducts = new ArrayList<>();
         for (Product product : this.productList.values()) {
-            if (filter.test(product)) {
-                System.out.println(product);
+            if (predicate.test(product)) {
+                filteredProducts.add(product);
             }
         }
+        return filteredProducts;
     }
-    public void increaseAllProductPrices(double percentage) {
+    public void applyToProducts(Consumer<Product> consumer) {
+        //TODo ist noch cursed
         for (Product product : this.productList.values()) {
-            double newPrice = product.getPrice() + (product.getPrice() * percentage / 100);
-            product.setPrice(newPrice);
+            consumer.accept(product);
         }
     }
 }
