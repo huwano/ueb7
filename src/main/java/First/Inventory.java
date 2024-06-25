@@ -5,10 +5,10 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class Inventory {
-    private HashMap<Integer, Product> productList;
+    private LinkedHashMap<Integer, Product> productList;
 
     public Inventory() {
-        this.productList = new HashMap<>();
+        this.productList = new LinkedHashMap<>();
     }
     public void addProduct(Product product) {
         this.productList.put(product.getProductId(), product);
