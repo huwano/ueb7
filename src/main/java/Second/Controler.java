@@ -13,20 +13,24 @@ public class Controler {
             nat();
         }
     }
-    public void fifo(){
+    public void fifo() {
         Producer producer = new Producer();
         Consumer consumer = new Consumer();
         Queue<Integer> queue = new LinkedList<>();
         Random ran = new Random();
-        for(int i = 0; i<10000; i++)
-        {
-            if(ran.nextInt(2) > 0 ) {
+        for (int i = 0; i < 10000; i++) {
+            if (ran.nextInt(2) > 0) {
                 queue.add(producer.produce());
-            }else {
-                consumer.consume(queue.remove());
+            } else {
+                try {
+                    consumer.consume(queue.remove());
+                } catch (NoSuchElementException ignored) {
 
+                }
             }
         }
+        System.out.println(consumer.numberOfDifferentResults());
+        System.out.println(consumer.getTimesForCrossTotal(3));
     }
     public void nat(){
         Producer producer = new Producer();
@@ -38,8 +42,11 @@ public class Controler {
             if(ran.nextInt(2) > 0 ) {
                 queue.add(producer.produce());
             }else {
-                consumer.consume(queue.remove());
+                try {
+                    consumer.consume(queue.remove());
+                } catch (NoSuchElementException ignored) {
 
+                }
             }
         }
     }
