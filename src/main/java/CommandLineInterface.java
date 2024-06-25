@@ -13,18 +13,18 @@ public class CommandLineInterface {
         displayMenu();
     }
     public void displayMenu() {
-        System.out.println(" Add Product -> 1.");
-        System.out.println(" remove a Product -> 2. ");
-        System.out.println(" look for a Product with an iD -> 3.");
-        System.out.println(" Show Products after Category -> 4. ");
-        System.out.println(" Show all Products -> 5.");
-        System.out.println(" Sort Products with their name -> 6.");
-        System.out.println(" Sort Products with their price -> 7. ");
-        System.out.println(" Show Products with low Inventory amount -> 8. ");
-        System.out.println(" Show Products with 9. Produkte nach benutzerdefiniertem Filter anzeigen");
-        System.out.println( " raise prices of all products by X% -> 10.");
-        System.out.println(" Quit this Application -> 11. ");
-        System.out.println(" Choose wisely... :");
+        System.out.println(" 1. -> Add Product ");
+        System.out.println(" 2. -> remove a Product  ");
+        System.out.println(" 3. -> look for a Product with an iD ");
+        System.out.println(" 4. -> Show Products after Category  ");
+        System.out.println(" 5. -> Show all Products ");
+        System.out.println(" 6. -> Sort Products with their name ");
+        System.out.println(" 7. -> Sort Products with their price ");
+        System.out.println(" 8. -> Show Products with low Inventory amount ");
+        System.out.println(" 9. -> Show Products with  Produkte nach benutzerdefiniertem Filter anzeigen");
+        System.out.println("10. ->  raise prices of all products by X% ");
+        System.out.println("11. ->  Quit this Application ");
+        System.out.println("12. ->  Choose wisely... :");
 
         int choice = scanner.nextInt();
         switch(choice) {
@@ -41,13 +41,13 @@ public class CommandLineInterface {
                 displayProductsByCategory();
                 displayMenu();
             case 5:
-                //listAllProducts();
+                listAllProducts();
                 displayMenu();
             case 6:
-                //sortProductsByName();
+                sortProductsByName();
                 displayMenu();
             case 7:
-                //sortProductsByPrice();
+                sortProductsByPrice();
                 displayMenu();
             case 8:
                 //displayLowStockProducts();
@@ -107,6 +107,19 @@ public class CommandLineInterface {
         System.out.println("Geben Sie die Kategorie ein:");
         String category = scanner.next();
         myInventory.displayProductsByCategory(category);
+    }
+    public void listAllProducts(){
+        myInventory.displayAllProducts();
+    }
+    public void sortProductsByName() {
+        myInventory.sortProductsByName();
+        System.out.println("Produkte sortiert nach Namen:");
+        listAllProducts();
+    }
+    public void sortProductsByPrice() {
+        myInventory.sortProductsByPrice();
+        System.out.println("Produkte sortiert nach Preis:");
+        listAllProducts();
     }
 
 }

@@ -30,7 +30,7 @@ public class Product {
     }
 
     public String getCategory() {
-        return category;
+        return category.toLowerCase();
     }
 
     public void setCategory(String category) {
