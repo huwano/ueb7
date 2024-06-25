@@ -121,5 +121,17 @@ public class CommandLineInterface {
         System.out.println("Produkte sortiert nach Preis:");
         listAllProducts();
     }
+    public void displayLowStockProducts() {
+        myInventory.displayLowStockProducts();
+    }
+    public void displayProductsByCustomFilter() {
+        myInventory.displayProductsByCustomFilter();
+    }
+    public void increaseAllProductPrices() {
+        System.out.println("Enter a percentage: ");
+        double percentage = scanner.nextDouble();
+        myInventory.increaseAllProductPrices(percentage);
+    }
+
 
 }

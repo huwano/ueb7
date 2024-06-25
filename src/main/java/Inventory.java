@@ -49,4 +49,20 @@ public class Inventory {
             this.productList.put(entry.getValue().getProductId(), entry.getValue());
         }
     }
+    public void displayLowStockProducts() {
+        for (Product product : this.productList.values()) {
+            if (product.getQuantity() < 5) {
+                System.out.println(product);
+            }
+        }
+    }
+    public void displayProductsByCustomFilter() {
+        // Implement your custom filter here
+    }
+    public void increaseAllProductPrices(double percentage) {
+        for (Product product : this.productList.values()) {
+            double newPrice = product.getPrice() + (product.getPrice() * percentage / 100);
+            product.setPrice(newPrice);
+        }
+    }
 }
