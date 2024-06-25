@@ -1,3 +1,5 @@
+package First;
+
 import java.util.Scanner;
 import java.util.function.Predicate;
 
@@ -10,18 +12,18 @@ public class CommandLineInterface {
          start();
     }
     public void start() {
-        System.out.println("Welcome to the Inventory Management System!");
+        System.out.println("Welcome to the First.Inventory Management System!");
         displayMenu();
     }
     public void displayMenu() {
-        System.out.println(" 1. -> Add Product ");
-        System.out.println(" 2. -> remove a Product  ");
-        System.out.println(" 3. -> look for a Product with an iD ");
+        System.out.println(" 1. -> Add First.Product ");
+        System.out.println(" 2. -> remove a First.Product  ");
+        System.out.println(" 3. -> look for a First.Product with an iD ");
         System.out.println(" 4. -> Show Products after Category  ");
         System.out.println(" 5. -> Show all Products ");
         System.out.println(" 6. -> Sort Products with their name ");
         System.out.println(" 7. -> Sort Products with their price ");
-        System.out.println(" 8. -> Show Products with low Inventory amount ");
+        System.out.println(" 8. -> Show Products with low First.Inventory amount ");
         System.out.println(" 9. -> Show Products with a custom filter ");
         System.out.println("10. ->  raise prices of all products by X% ");
         System.out.println("11. ->  Quit this Application ");

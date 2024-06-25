@@ -1,3 +1,5 @@
+package First;
+
 public class Product {
     private int productId;
     private String name;
@@ -53,7 +55,7 @@ public class Product {
         this.quantity = quantity;
     }
     public String toString() {
-        return "Product{" +
+        return "First.Product{" +
                 "productId=" + productId +
                 ", name='" + name + '\'' +
                 ", category='" + category + '\'' +
