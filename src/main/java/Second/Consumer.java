@@ -5,7 +5,7 @@ import java.util.*;
 public class Consumer {
     private Map<Integer, List<Long>> sumMap;
     public Consumer() {
-        this.sumMap = new HashMap<>();
+        this.sumMap = new LinkedHashMap<>();
     }
     public void consume(int number) {
         int sum = 0;
@@ -33,13 +33,13 @@ public class Consumer {
         }
         return times.size();
     }
-    public PriorityQueue<Integer> getCrossTotalsAscending(){
+    public Collection<Integer> getCrossTotalsAscending(){
         PriorityQueue<Integer> crossTotals = new PriorityQueue<>();
         crossTotals.addAll(sumMap.keySet());
         return crossTotals;
 
     }
-    public PriorityQueue<Integer> getCrossTotalsDescending(){
+    public Collection<Integer> getCrossTotalsDescending(){
 
         //TODO: figure this out
         PriorityQueue<Integer> crossTotals = new PriorityQueue<>(Collections.reverseOrder());

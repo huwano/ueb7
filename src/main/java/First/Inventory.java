@@ -49,26 +49,23 @@ public class Inventory {
         }
     }
     public void sortProductsByName() {
-
-        //TODO; cursed
-        TreeMap<String, Product> sortedProducts = new TreeMap<>();
-        for (Product product : this.productList.values()) {
-            sortedProducts.put(product.getName(), product);
+        TreeMap<String, Product> sortedMap = new TreeMap<>();
+        for(Product product: this.productList.values()) {
+            sortedMap.put(product.getName(), product);
         }
         this.productList.clear();
-        for (Map.Entry<String, Product> entry : sortedProducts.entrySet()) {
-            this.productList.put(entry.getValue().getProductId(), entry.getValue());
+        for(Product product: sortedMap.values()) {
+            this.productList.put(product.getProductId(), product);
         }
     }
     public void sortProductsByPrice() {
-        //TODO; cursed
-        TreeMap<Double, Product> sortedProducts = new TreeMap<>();
-        for (Product product : this.productList.values()) {
-            sortedProducts.put(product.getPrice(), product);
+        TreeMap<Double, Product> sortedMap = new TreeMap<>();
+        for(Product product: this.productList.values()) {
+            sortedMap.put(product.getPrice(), product);
         }
         this.productList.clear();
-        for (Map.Entry<Double, Product> entry : sortedProducts.entrySet()) {
-            this.productList.put(entry.getValue().getProductId(), entry.getValue());
+        for(Product product: sortedMap.values()) {
+            this.productList.put(product.getProductId(), product);
         }
     }
     public List<Product> getLowStockProducts(int threshold) {
