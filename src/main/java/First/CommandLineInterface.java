@@ -134,42 +134,42 @@ public class CommandLineInterface {
         listAllProducts();
     }
     public void displayLowStockProducts() {
-        System.out.println("Enter a threshold for low stock products:");
+        System.out.println(" Geben Sie einen threshold für Produkte mit geringem Lagerbestand an");
         int threshold = scanner.nextInt();
         myInventory.getLowStockProducts(threshold).forEach(System.out::println);
     }
     public void displayProductsByCustomFilter() {
-        System.out.println("Enter filter type (name, category, price, quantity):");
+        System.out.println("Geben Sie einen Filter Typen an - ( Name, Kategorie, Preis, Anzahl");
         String filterType = scanner.next();
 
         switch (filterType.toLowerCase()) {
-            case "name":
-                System.out.println("Enter product name:");
+            case "Name":
+                System.out.println("Geben Sie den Prudktamen ein:");
                 String name = scanner.next();
                 myInventory.filterProducts(product -> product.getName().equals(name));
                 break;
-            case "category":
-                System.out.println("Enter product category:");
+            case "Kategorie":
+                System.out.println("Geben Sie die Produkt-Kategorie ein:");
                 String category = scanner.next();
                 myInventory.filterProducts(product -> product.getCategory().equals(category));
                 break;
-            case "price":
-                System.out.println("Enter product price:");
+            case "Preis":
+                System.out.println("Geben Sie den Produkt Preis an:");
                 double price = scanner.nextDouble();
                 myInventory.filterProducts(product -> product.getPrice() == price);
                 break;
-            case "quantity":
-                System.out.println("Enter product quantity:");
+            case "Anzahl":
+                System.out.println("Geben Sie die Produkt Anzahl an:");
                 int quantity = scanner.nextInt();
                 myInventory.filterProducts(product -> product.getQuantity() == quantity);
                 break;
             default:
-                System.out.println("Invalid filter type.");
+                System.out.println("Nicht Gültiger Filter Typ !.");
                 return;
         }
     }
     public void increaseAllProductPrices() {
-        System.out.println("Enter a percentage: ");
+        System.out.println("Geben Sie eine Prozenztanzahl an");
         double percentage = scanner.nextDouble();
         myInventory.applyToProducts(product -> product.setPrice(product.getPrice() * (1 + percentage / 100)));
     }
